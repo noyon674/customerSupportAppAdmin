@@ -21,6 +21,10 @@ const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'))
 const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 
+//Category
+const Categories = React.lazy(() => import('./views/pages/Category/Categories'))
+const Category = React.lazy(() => import('./views/pages/Category/Category'))
+
 // Buttons
 const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'))
 const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'))
@@ -97,6 +101,8 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+  { path: '/categories', name: 'Categories', element: Categories, exact: true }, //routed categories component
+  { path: '/categories/category', name: 'Category', element: Category, exact: true }, //routed categories component
 ]
 
 export default routes

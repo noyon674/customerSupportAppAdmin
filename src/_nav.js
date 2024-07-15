@@ -269,6 +269,17 @@ const _nav = [
     },
   },
   {
+    component: CNavGroup,
+    name: 'Categories',
+    items: [
+      {
+        component: CNavItem,
+        name: 'Category',
+        to: '/categories/category',
+      },
+    ],
+  },
+  {
     component: CNavTitle,
     name: 'Extras',
   },
