@@ -270,12 +270,17 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Categories',
+    name: 'Category Tab',
     items: [
       {
         component: CNavItem,
+        name: 'Categories',
+        to: '/categories/',
+      },
+      {
+        component: CNavItem,
         name: 'Category',
-        to: '/categories/category',
+        to: '/categories/id',
       },
     ],
   },

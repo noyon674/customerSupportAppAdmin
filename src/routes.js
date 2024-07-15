@@ -102,7 +102,7 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/categories', name: 'Categories', element: Categories, exact: true }, //routed categories component
-  { path: '/categories/category', name: 'Category', element: Category, exact: true }, //routed categories component
+  { path: '/categories/id', name: 'Category', element: Category, exact: true }, //routed categories component
 ]
 
 export default routes
