@@ -27,6 +27,10 @@ function Category() {
             type='text'
             name = 'name'
             required />
+            <CFormLabel>Description</CFormLabel>
+            <CFormTextarea
+            name='textarea'
+            />
           </CCardBody>
         </CCard>
       </CCol>
