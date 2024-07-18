@@ -25,6 +25,10 @@ const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 const Categories = React.lazy(() => import('./views/pages/Category/Categories'))
 const Category = React.lazy(() => import('./views/pages/Category/Category'))
 
+// frequent
+const Frequent = React.lazy(() => import('./views/pages/FAQ/Frequent'))
+const Frequents = React.lazy(() => import('./views/pages/FAQ/Frequents'))
+
 // Buttons
 const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'))
 const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'))
@@ -103,6 +107,8 @@ const routes = [
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/categories', name: 'Categories', element: Categories, exact: true }, //routed categories component
   { path: '/categories/id', name: 'Category', element: Category, exact: true }, //routed categories component
+  { path: '/frequents', name: 'Frequents', element: Frequents, exact: true }, //route for frequents component
+  { path: '/frequents/id', name: 'Frequent', element: Frequent, exact: true }, //route for frequent component
 ]
 
 export default routes

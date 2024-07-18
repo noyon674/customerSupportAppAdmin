@@ -285,6 +285,22 @@ const _nav = [
     ],
   },
   {
+    component: CNavGroup,
+    name: 'Frequent Tab',
+    items: [
+      {
+        component: CNavItem,
+        name: 'Frequents',
+        to: '/frequents'
+      },
+      {
+        component: CNavItem,
+        name: 'Frequent',
+        to: '/frequents/id',
+      },
+    ]
+  },
+  {
     component: CNavTitle,
     name: 'Extras',
   },
