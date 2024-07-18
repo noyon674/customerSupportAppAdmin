@@ -291,14 +291,30 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Frequents',
-        to: '/frequents'
+        to: '/frequents',
       },
       {
         component: CNavItem,
         name: 'Frequent',
         to: '/frequents/id',
       },
-    ]
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Article Tab',
+    items: [
+      {
+        component: CNavItem,
+        name: 'Articles',
+        to: '/articles',
+      },
+      {
+        component: CNavItem,
+        name: 'Article',
+        to: '/articles/id',
+      },
+    ],
   },
   {
     component: CNavTitle,
