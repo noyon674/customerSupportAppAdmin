@@ -12,7 +12,6 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react'
-import { DocsExample } from 'src/components'
 
 function Article() {
   return (
