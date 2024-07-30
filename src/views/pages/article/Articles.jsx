@@ -10,8 +10,11 @@ import {
   CTableHead, 
   CTableHeaderCell, 
   CTableRow
-} from '@coreui/react'
-import React from 'react'
+} from '@coreui/react';
+import React from 'react';
+import { CIcon } from '@coreui/icons-react';
+import { cilFilter, cilSun, cilX } from '@coreui/icons';
+import './article.scss';
 
 function Articles() {
   return (
@@ -19,8 +22,9 @@ function Articles() {
       <CRow>
         <CCol xs={12}>
           <CCard className='mb-4'>
-            <CCardHeader>
+            <CCardHeader className='tableHeader'>
               <strong>All Articles</strong>
+              <CIcon icon={cilFilter}/>
             </CCardHeader>
             <CCardBody>
               <CTable hover>
@@ -29,9 +33,7 @@ function Articles() {
                   <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">
-                    <button className='btn btn-success text-white'>Actions</button>
-                  </CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -40,8 +42,8 @@ function Articles() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                      <button className='btn btn-primary me-2'>view</button>
-                      <button className='btn btn-danger text-white'>remove</button>
+                      <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
+                      <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
                     </CTableDataCell>
                   </CTableRow>
                   <CTableRow>
@@ -49,8 +51,8 @@ function Articles() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                      <button className='btn btn-primary me-2'>view</button>
-                      <button className='btn btn-danger text-white'>remove</button>
+                    <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
+                    <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
                     </CTableDataCell>
                   </CTableRow>
                   <CTableRow>
@@ -58,8 +60,8 @@ function Articles() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                      <button className='btn btn-primary me-2'>view</button>
-                      <button className='btn btn-danger text-white'>remove</button>
+                    <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
+                    <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
                     </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
