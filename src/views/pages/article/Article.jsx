@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from '../../../utils/useForm';
 import {
   CButton,
@@ -14,6 +14,8 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react';
+import { addArticle } from '../../../utils/api';
+
 
 function Article() {
   const { values, handleChange, resetForm } = useForm({
@@ -24,12 +26,19 @@ function Article() {
 
   const { title, content, category } = values;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('article', values);
-    resetForm();
+    try {
+      const data = await addArticle(values);
+      if(data){
+        console.log(data);
+        resetForm();
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
   };
-
   return (
     <CRow>
       <CCol xs={12}>
