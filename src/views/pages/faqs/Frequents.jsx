@@ -1,39 +1,40 @@
-import { 
-  CCard, 
-  CCardBody, 
-  CCardHeader, 
-  CCol, 
-  CRow, 
-  CTable, 
-  CTableBody, 
-  CTableDataCell, 
-  CTableHead, 
-  CTableHeaderCell, 
-  CTableRow
+/* eslint-disable prettier/prettier */
+import {
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCol,
+  CRow,
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
 } from '@coreui/react'
 import React from 'react'
-import { CIcon } from '@coreui/icons-react';
-import { cilFilter, cilSun, cilX } from '@coreui/icons';
-import './frequent.scss';
+import { CIcon } from '@coreui/icons-react'
+import { cilFilter, cilSun, cilX } from '@coreui/icons'
+import './frequent.scss'
 
 function Frequents() {
   return (
     <div>
       <CRow>
         <CCol xs={12}>
-          <CCard className='mb-4'>
-            <CCardHeader className='frequentHeader'>
+          <CCard className="mb-4">
+            <CCardHeader className="frequentHeader">
               <strong>All Frequents</strong>
-              <CIcon icon={cilFilter}/>
+              <CIcon icon={cilFilter} />
             </CCardHeader>
             <CCardBody>
               <CTable hover>
                 <CTableHead>
                   <CTableRow>
-                  <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Action</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -42,8 +43,12 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                      <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
-                      <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
+                      <button className="btn btn-primary me-2">
+                        <CIcon icon={cilSun} />
+                      </button>
+                      <button className="btn btn-danger text-white">
+                        <CIcon icon={cilX} />
+                      </button>
                     </CTableDataCell>
                   </CTableRow>
                   <CTableRow>
@@ -51,8 +56,12 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                    <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
-                    <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
+                      <button className="btn btn-primary me-2">
+                        <CIcon icon={cilSun} />
+                      </button>
+                      <button className="btn btn-danger text-white">
+                        <CIcon icon={cilX} />
+                      </button>
                     </CTableDataCell>
                   </CTableRow>
                   <CTableRow>
@@ -60,8 +69,12 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
-                    <button className='btn btn-primary me-2'><CIcon icon={cilSun}/></button>
-                    <button className='btn btn-danger text-white'><CIcon icon={cilX}/></button>
+                      <button className="btn btn-primary me-2">
+                        <CIcon icon={cilSun} />
+                      </button>
+                      <button className="btn btn-danger text-white">
+                        <CIcon icon={cilX} />
+                      </button>
                     </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
@@ -74,4 +87,4 @@ function Frequents() {
   )
 }
 
-export default Frequents;
+export default Frequents

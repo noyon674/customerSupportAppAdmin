@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react'
 import {
   CButton,
@@ -10,10 +11,23 @@ import {
   CFormLabel,
   CFormTextarea,
   CRow,
-} from '@coreui/react'
-import { DocsExample } from 'src/components'
+} from '@coreui/react';
+import { useForm } from '../../../utils/useForm';
 
 function Category() {
+  const { values, handleChange, resetForm } = useForm({
+    name: '',
+    description: '',
+    file: null
+  });
+
+  const { name, description, file } = values;
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log('category', values)
+  };
+
   return (
     <CRow>
       <CCol xs={12}>
@@ -22,27 +36,40 @@ function Category() {
             <strong>Category</strong>
           </CCardHeader>
           <CCardBody>
-            <CForm>
+            <CForm onSubmit={handleSubmit}>
               <CFormLabel>Name</CFormLabel>
-              <CFormInput
-              className='mb-4'
-              type='text'
-              name = 'name'
+              <CFormInput 
+              className="mb-4" 
+              type="text" 
+              name="name" 
+              value={name}
+              onChange={handleChange}
               required />
               <CFormLabel>Description</CFormLabel>
-              <CFormTextarea
-              className='mb-4'
-              name='textarea'
-              rows={6}
-              />
+              <CFormTextarea 
+              className="mb-4" 
+              name="description" 
+              value={description}
+              onChange={handleChange}
+              required
+              rows={6} />
               <CFormLabel>Thumbnil</CFormLabel>
-              <CFormInput
-              className='mb-4'
-              type='file'
-              />
-              <CButton type="button" class="btn btn-success me-4 text-light">Save</CButton>
-              <CButton type="button" class="btn btn-primary me-4">Save and add another</CButton>
-              <CButton type="button" class="btn btn-secondary">Save and add continue editing</CButton>
+              <CFormInput 
+              className="mb-4" 
+              type="file"
+              name='file'
+              value={file}
+              required
+              onChange={handleChange} />
+              <CButton type="submit" class="btn btn-success me-4 text-light">
+                Save
+              </CButton>
+              <CButton type="button" class="btn btn-primary me-4">
+                Save and add another
+              </CButton>
+              <CButton type="button" class="btn btn-secondary">
+                Save and add continue editing
+              </CButton>
             </CForm>
           </CCardBody>
         </CCard>
@@ -51,4 +78,4 @@ function Category() {
   )
 }
 
-export default Category
+export default Category;
