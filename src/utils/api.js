@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios'
 
-const BASE_URL = process.env.Backend_API;
+const BASE_URL = import.meta.env.VITE_BACKEND_API;
 
 export const apiClient = axios.create({
     baseURL: BASE_URL,
