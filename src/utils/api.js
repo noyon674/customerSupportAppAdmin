@@ -11,7 +11,7 @@ export const apiClient = axios.create({
 });
 
 export const addArticle = async (userdata) => {
-    const response = await apiClient.post('/articles/add', userdata);
+    const response = await apiClient.post('/articles/', userdata);
     return response.data;
 }
 
