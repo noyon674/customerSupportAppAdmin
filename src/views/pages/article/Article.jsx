@@ -28,11 +28,9 @@ function Article() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('article', values);
     try {
       const data = await addArticle(values);
       if(data){
-        console.log(data);
         resetForm();
       }
     } catch (error) {
