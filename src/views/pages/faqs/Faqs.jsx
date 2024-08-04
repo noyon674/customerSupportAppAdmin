@@ -14,8 +14,8 @@ import {
 } from '@coreui/react'
 import React from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilSun, cilX } from '@coreui/icons'
-import './frequent.scss'
+import { cilFilter, cilPen, cilX } from '@coreui/icons'
+import './faq.scss'
 
 function Frequents() {
   return (
@@ -24,7 +24,7 @@ function Frequents() {
         <CCol xs={12}>
           <CCard className="mb-4">
             <CCardHeader className="frequentHeader">
-              <strong>All Frequents</strong>
+              <strong>All FAQs</strong>
               <CIcon icon={cilFilter} />
             </CCardHeader>
             <CCardBody>
@@ -44,7 +44,7 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
                       <button className="btn btn-primary me-2">
-                        <CIcon icon={cilSun} />
+                        <CIcon icon={cilPen} />
                       </button>
                       <button className="btn btn-danger text-white">
                         <CIcon icon={cilX} />
@@ -57,7 +57,7 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
                       <button className="btn btn-primary me-2">
-                        <CIcon icon={cilSun} />
+                        <CIcon icon={cilPen} />
                       </button>
                       <button className="btn btn-danger text-white">
                         <CIcon icon={cilX} />
@@ -70,7 +70,7 @@ function Frequents() {
                     <CTableDataCell>Noyon</CTableDataCell>
                     <CTableDataCell>
                       <button className="btn btn-primary me-2">
-                        <CIcon icon={cilSun} />
+                        <CIcon icon={cilPen} />
                       </button>
                       <button className="btn btn-danger text-white">
                         <CIcon icon={cilX} />

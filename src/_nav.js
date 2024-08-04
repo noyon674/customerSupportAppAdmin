@@ -286,16 +286,16 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Frequent Tab',
+    name: 'FAQ Tab',
     items: [
       {
         component: CNavItem,
-        name: 'Frequents',
+        name: 'FAQs',
         to: '/frequents',
       },
       {
         component: CNavItem,
-        name: 'Frequent',
+        name: 'FAQ',
         to: '/frequents/id',
       },
     ],

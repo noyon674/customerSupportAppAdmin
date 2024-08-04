@@ -30,7 +30,7 @@ function Frequent() {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            <strong>Frequent</strong>
+            <strong>Frequently Asked Questions</strong>
           </CCardHeader>
           <CCardBody>
             <CForm onSubmit={handleSubmit}>
