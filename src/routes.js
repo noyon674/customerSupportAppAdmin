@@ -22,8 +22,8 @@ const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 
 //Category
-const Categories = React.lazy(() => import('./views/pages/Category/Categories'))
-const Category = React.lazy(() => import('./views/pages/Category/Category'))
+const Categories = React.lazy(() => import('./views/pages/category/Categories'))
+const Category = React.lazy(() => import('./views/pages/category/Category'))
 
 // frequent
 const Frequent = React.lazy(() => import('./views/pages/faqs/Frequent'))
