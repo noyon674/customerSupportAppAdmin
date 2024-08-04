@@ -18,4 +18,9 @@ export const addArticle = async (userdata) => {
 export const getArticles = async () => {
     const response = await apiClient.get('/articles/');
     return response.data
-}
+};
+
+export const getFaqs = async () => {
+    const response = await apiClient.get('/faqs/');
+    return response.data
+};
