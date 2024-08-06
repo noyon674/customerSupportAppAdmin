@@ -114,7 +114,7 @@ const routes = [
   { path: '/frequents', name: 'Frequents', element: Frequents, exact: true }, //route for frequents component
   { path: '/frequents/id', name: 'Frequent', element: Frequent, exact: true }, //route for frequent component
   { path: '/articles', name: 'Articles', element: Articles, exact: true },
-  { path: '/articles/id', name: 'Article', element: Article, exact: true },
+  { path: '/articles/article', name: 'Article', element: Article, exact: true },
 ]
 
 export default routes

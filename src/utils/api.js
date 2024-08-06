@@ -10,17 +10,33 @@ export const apiClient = axios.create({
     },
 });
 
+
+// API for articles
+export const getArticles = async () => {
+    const response = await apiClient.get('/articles/');
+    return response.data;
+};
+
 export const addArticle = async (userdata) => {
     const response = await apiClient.post('/articles/', userdata);
     return response.data;
 }
 
-export const getArticles = async () => {
-    const response = await apiClient.get('/articles/');
-    return response.data
-};
 
+// API for faqs
 export const getFaqs = async () => {
     const response = await apiClient.get('/faqs/');
-    return response.data
+    return response.data;
 };
+
+export const addFAQ = async (userdata) => {
+    const response = await apiClient.post('/faqs/', userdata);
+    return response.data;
+}
+
+
+// API for categories
+export const getCategories = async () => {
+    const response = await apiClient.get('/categories/');
+    return response.data;
+}

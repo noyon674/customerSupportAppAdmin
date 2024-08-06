@@ -13,6 +13,8 @@ import {
   CRow,
 } from '@coreui/react';
 import { useForm } from '../../../utils/useForm';
+import { addFAQ } from '../../../utils/api';
+import axios from 'axios';
 
 function Frequent() {
   const {values, handleChange, resetForm } = useForm({
@@ -21,9 +23,16 @@ function Frequent() {
   });
   const { question, answer } = values;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('frequent', values);
+    try {
+      const response = await addFAQ(values)
+      if(response){
+        resetForm();
+      }
+    }catch(error){
+      console.log(error.message)
+    }
   }
   return (
     <CRow>
@@ -55,9 +64,6 @@ function Frequent() {
               </CButton>
               <CButton type="button" class="btn btn-primary me-4">
                 Save and add another
-              </CButton>
-              <CButton type="button" class="btn btn-secondary">
-                Save and add continue editing
               </CButton>
             </CForm>
           </CCardBody>
