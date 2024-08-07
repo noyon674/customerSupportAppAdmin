@@ -89,7 +89,12 @@ function Articles() {
     </CRow>
   )
 
-  return <div>{isLoading ? 'Data Fetching...' : totalTable}</div>
+  return <div>
+    <div>
+      <button className='btn btn-prima'>Add</button>
+    </div>
+    {isLoading ? 'Data Fetching...' : totalTable}
+    </div>
 }
 
-export default Articles
+export default Articles;
