@@ -309,11 +309,11 @@ const _nav = [
         name: 'Articles',
         to: '/articles',
       },
-      {
-        component: CNavItem,
-        name: 'Article',
-        to: '/articles/article',
-      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Article',
+      //   to: '/articles/article',
+      // },
     ],
   },
   {

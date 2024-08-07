@@ -14,9 +14,10 @@ import {
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX } from '@coreui/icons'
+import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
 import { getArticles } from '../../../utils/api'
 import './article.scss'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function Articles() {
   const [data, setData] = useState([])
@@ -42,6 +43,12 @@ function Articles() {
     if (text.length > 150) {
       return text.slice(0, 150) + '...'
     } else return text
+  };
+
+  const navigate = useNavigate();
+
+  const addNewArticle = (e) =>{
+    navigate('/articles/article');
   }
 
   const totalTable = (
@@ -71,7 +78,7 @@ function Articles() {
                         <CTableDataCell>{item.category}</CTableDataCell>
                         <CTableDataCell>{sliceText(item.content)}</CTableDataCell>
                         <CTableDataCell>
-                          <button className="btn btn-primary me-2">
+                          <button className="btn btn-secondary me-2">
                             <CIcon icon={cilPen} />
                           </button>
                           <button className="btn btn-danger text-white">
@@ -90,8 +97,8 @@ function Articles() {
   )
 
   return <div>
-    <div>
-      <button className='btn btn-prima'>Add</button>
+    <div className='btnContainer'>
+      <button className='btn btn-primary' onClick={addNewArticle}>Add <CIcon icon={cilNoteAdd}/></button>
     </div>
     {isLoading ? 'Data Fetching...' : totalTable}
     </div>
