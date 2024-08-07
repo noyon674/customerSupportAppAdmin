@@ -43,12 +43,12 @@ function Articles() {
     if (text.length > 150) {
       return text.slice(0, 150) + '...'
     } else return text
-  };
+  }
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const addNewArticle = (e) =>{
-    navigate('/articles/article');
+  const addNewArticle = (e) => {
+    navigate('/articles/article')
   }
 
   const totalTable = (
@@ -96,12 +96,16 @@ function Articles() {
     </CRow>
   )
 
-  return <div>
-    <div className='btnContainer'>
-      <button className='btn btn-primary' onClick={addNewArticle}>Add <CIcon icon={cilNoteAdd}/></button>
+  return (
+    <div>
+      <div className="btnContainer">
+        <button className="btn btn-primary" onClick={addNewArticle}>
+          Add <CIcon icon={cilNoteAdd} />
+        </button>
+      </div>
+      {isLoading ? 'Data Fetching...' : totalTable}
     </div>
-    {isLoading ? 'Data Fetching...' : totalTable}
-    </div>
+  )
 }
 
-export default Articles;
+export default Articles

@@ -85,9 +85,6 @@ function Article() {
               <CButton type="button" class="btn btn-primary me-4">
                 Save and add another
               </CButton>
-              <CButton type="button" class="btn btn-secondary">
-                Save and add continue editing
-              </CButton>
             </CForm>
           </CCardBody>
         </CCard>
