@@ -21,7 +21,7 @@ const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'))
 const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 
-//Category
+//category
 const Categories = React.lazy(() => import('./views/pages/category/Categories'))
 const Category = React.lazy(() => import('./views/pages/category/Category'))
 
