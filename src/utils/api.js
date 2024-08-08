@@ -40,3 +40,8 @@ export const getCategories = async () => {
     const response = await apiClient.get('/categories/');
     return response.data;
 }
+
+export const addCategory = async (userdata) => {
+    const response = await apiClient.post('/categories/', userdata);
+    console.log(response)
+}

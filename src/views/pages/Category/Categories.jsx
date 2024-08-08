@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import {
   CCard,
   CCardBody,
@@ -13,9 +14,10 @@ import {
 } from '@coreui/react'
 import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX } from '@coreui/icons'
+import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './category.scss'
 import { getCategories } from '../../../utils/api'
+import { useNavigate } from 'react-router-dom'
 
 function Categories() {
   const [data, setData] = useState([])
@@ -31,61 +33,79 @@ function Categories() {
         setError(false)
       }
     } catch (error) {
-      setIsLoading(false);
-      setError(error.message);
+      setIsLoading(false)
+      setError(error.message)
     }
   }, []);
 
+  const sliceText = (text) => {
+    if (text.length > 150) {
+      return text.slice(0, 150) + '...'
+    } else return text
+  };
+
+  const navigate = useNavigate();
+  
+  const addCategory = () => {
+    navigate('/categories/category');
+  };
+
   const totalTable = (
     <CRow>
-        <CCol xs={12}>
-          <CCard className="mb-4">
-            <CCardHeader className="categoryHeader">
-              <strong>All Categories</strong>
-              <CIcon icon={cilFilter} />
-            </CCardHeader>
-            <CCardBody>
-              <CTable hover>
-                <CTableHead>
-                  <CTableRow>
-                    <CTableHeaderCell scope="col">Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Description</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Image</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
-                <CTableBody>
-                  {
-                    data && data.map(item=>{
-                      return <CTableRow>
-                        <CTableDataCell>{item.name}</CTableDataCell>
-                        <CTableDataCell>{item.description}</CTableDataCell>
-                        <CTableDataCell className='img'>
+      <CCol xs={12}>
+        <CCard className="mb-4">
+          <CCardHeader className="categoryHeader">
+            <strong>All Categories</strong>
+            <CIcon icon={cilFilter} />
+          </CCardHeader>
+          <CCardBody>
+            <CTable hover>
+              <CTableHead>
+                <CTableRow>
+                  <CTableHeaderCell scope="col">Name</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Description</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Image</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
+                </CTableRow>
+              </CTableHead>
+              <CTableBody>
+                {data &&
+                  data.map((item) => {
+                    return (
+                      <CTableRow>
+                        <CTableDataCell>{sliceText(item.name)}</CTableDataCell>
+                        <CTableDataCell>{sliceText(item.description)}</CTableDataCell>
+                        <CTableDataCell className="img">
                           <img src={item.thumbnail} alt="" />
-                          </CTableDataCell>
-                          <CTableDataCell>
-                            <button className='btn btn-primary me-2'>
-                              <CIcon icon={cilPen}/>
-                            </button>
-                            <button className='btn btn-danger text-white'>
-                              <CIcon icon={cilX}/>
-                            </button>
-                          </CTableDataCell>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <button className="btn btn-primary me-2">
+                            <CIcon icon={cilPen} />
+                          </button>
+                          <button className="btn btn-danger text-white">
+                            <CIcon icon={cilX} />
+                          </button>
+                        </CTableDataCell>
                       </CTableRow>
-                    })
-                  }
-                </CTableBody>
-              </CTable>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-  );
+                    )
+                  })}
+              </CTableBody>
+            </CTable>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  )
   return (
     <div>
-      {isLoading ? 'Data Fetching' : totalTable}
+      <div className="btnContainer">
+        <button className="btn btn-primary" onClick={addCategory}>
+          Add <CIcon icon={cilNoteAdd} />
+        </button>
+      </div>
+      {isLoading ? 'Data Fetching...' : totalTable}
     </div>
   )
 }
 
-export default Categories
+export default Categories;

@@ -13,20 +13,26 @@ import {
   CRow,
 } from '@coreui/react';
 import { useForm } from '../../../utils/useForm';
+import { addCategory } from '../../../utils/api';
+import axios from 'axios';
 
 function Category() {
-  const { values, handleChange, resetForm } = useForm({
+  const { values, handleChange, resetForm }= useForm({
     name: '',
     description: '',
-    file: null
+    thumbnail: ''
   });
 
-  const { name, description, file } = values;
+  const { name, description, thumbnail } = values;
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('category', values)
-  };
+    try {
+      const response = await addCategory(values);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   return (
     <CRow>
@@ -53,12 +59,12 @@ function Category() {
               onChange={handleChange}
               required
               rows={6} />
-              <CFormLabel>Thumbnil</CFormLabel>
+              <CFormLabel>Thumbnail</CFormLabel>
               <CFormInput 
               className="mb-4" 
               type="file"
-              name='file'
-              value={file}
+              name='thumbnail'
+              value={thumbnail}
               required
               onChange={handleChange} />
               <CButton type="submit" class="btn btn-success me-4 text-light">
@@ -66,9 +72,6 @@ function Category() {
               </CButton>
               <CButton type="button" class="btn btn-primary me-4">
                 Save and add another
-              </CButton>
-              <CButton type="button" class="btn btn-secondary">
-                Save and add continue editing
               </CButton>
             </CForm>
           </CCardBody>

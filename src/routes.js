@@ -110,7 +110,7 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/categories', name: 'Categories', element: Categories, exact: true }, //routed categories component
-  { path: '/categories/id', name: 'Category', element: Category, exact: true }, //routed categories component
+  { path: '/categories/category', name: 'Category', element: Category, exact: true }, //routed categories component
   { path: '/frequents', name: 'Frequents', element: Frequents, exact: true }, //route for frequents component
   { path: '/frequents/id', name: 'Frequent', element: Frequent, exact: true }, //route for frequent component
   { path: '/articles', name: 'Articles', element: Articles, exact: true },

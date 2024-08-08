@@ -277,11 +277,11 @@ const _nav = [
         name: 'Categories',
         to: '/categories/',
       },
-      {
-        component: CNavItem,
-        name: 'Category',
-        to: '/categories/id',
-      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Category',
+      //   to: '/categories/id',
+      // },
     ],
   },
   {
