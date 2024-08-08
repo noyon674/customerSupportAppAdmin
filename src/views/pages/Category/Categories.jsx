@@ -36,19 +36,19 @@ function Categories() {
       setIsLoading(false)
       setError(error.message)
     }
-  }, []);
+  }, [])
 
   const sliceText = (text) => {
     if (text.length > 150) {
       return text.slice(0, 150) + '...'
     } else return text
-  };
+  }
 
-  const navigate = useNavigate();
-  
+  const navigate = useNavigate()
+
   const addCategory = () => {
-    navigate('/categories/category');
-  };
+    navigate('/categories/category')
+  }
 
   const totalTable = (
     <CRow>
@@ -108,4 +108,4 @@ function Categories() {
   )
 }
 
-export default Categories;
+export default Categories
