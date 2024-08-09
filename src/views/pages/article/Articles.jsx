@@ -15,7 +15,7 @@ import {
 import React, { useEffect, useState } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
-import { getArticles } from '../../../utils/api'
+import { getArticles } from "src/utils/api"
 import './article.scss'
 import { Navigate, useNavigate } from 'react-router-dom'
 
