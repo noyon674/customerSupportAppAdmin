@@ -15,8 +15,11 @@ import {
 import { useForm } from '../../../utils/useForm';
 import { addFAQ } from '../../../utils/api';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function FAQ() {
+  const navigate = useNavigate()
+
   const {values, handleChange, resetForm } = useForm({
     question: '',
     answer: ''
@@ -29,6 +32,7 @@ function FAQ() {
       const response = await addFAQ(values)
       if(response){
         resetForm();
+        navigate('/faqs')
       }
     }catch(error){
       console.log(error.message)

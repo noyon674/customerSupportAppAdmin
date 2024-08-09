@@ -14,8 +14,11 @@ import {
 } from '@coreui/react';
 import { useForm } from '../../../utils/useForm';
 import { addCategory } from '../../../utils/api';
+import { useNavigate } from 'react-router-dom';
 
 function Category() {
+  const navigete = useNavigate()
+
   const { values, handleChange, resetForm }= useForm({
     name: '',
     description: '',
@@ -25,13 +28,16 @@ function Category() {
   const { name, description, thumbnail } = values;
 
   const handleSubmit = async(e) => {
-    e.preventDefault();
-    // try {
-    //   const response = await addCategory(values);
-    //   resetForm();
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+    e.preventDefault()
+    try {
+      const response = await addCategory(values)
+      if(response){
+        resetForm()
+        navigete('/categories')
+      };
+    } catch (error) {
+      console.log(error.message)
+    }
   };
   
   return (
@@ -57,7 +63,6 @@ function Category() {
               name="description" 
               value={description}
               onChange={handleChange}
-              required
               rows={6} />
               <CFormLabel>Thumbnail</CFormLabel>
               <CFormInput 
@@ -65,7 +70,6 @@ function Category() {
               type="file"
               name='thumbnail'
               value={thumbnail}
-              required
               onChange={handleChange} />
               <CButton type="submit" className="btn btn-success me-4 text-light">
                 Save

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-key */
 import {
   CCard,
@@ -20,22 +21,25 @@ import { getCategories } from '../../../utils/api'
 import { useNavigate } from 'react-router-dom'
 
 function Categories() {
-  const [data, setData] = useState([])
+  const [categories, setCategories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  useEffect(async()=>{
-    const response = await getCategories()
-    try {
-      if (response) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getCategories()
+        if(response){
+          setIsLoading(false)
+          setCategories(response)
+          setError(false)
+        }
+      } catch (error) {
         setIsLoading(false)
-        setData(response)
-        setError(false)
+        setError(error.message)
       }
-    } catch (error) {
-      setIsLoading(false)
-      setError(error.message)
     }
+    fetchData()
   }, [])
 
   const sliceText = (text) => {
@@ -69,8 +73,8 @@ function Categories() {
                 </CTableRow>
               </CTableHead>
               <CTableBody>
-                {data &&
-                  data.map((item) => {
+                {categories &&
+                  categories.map((item) => {
                     return (
                       <CTableRow>
                         <CTableDataCell>{sliceText(item.name)}</CTableDataCell>

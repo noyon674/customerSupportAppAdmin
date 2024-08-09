@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from '../../../utils/useForm';
 import {
   CButton,
@@ -14,10 +14,12 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react';
-import { addArticle } from '../../../utils/api';
+import { addArticle, getCategories } from '../../../utils/api';
 
 
 function Article() {
+  const [categories, setCategories] = useState([]);
+
   const { values, handleChange, resetForm } = useForm({
     title: '',
     content: '',
@@ -26,10 +28,21 @@ function Article() {
 
   const { title, content, category } = values;
 
+  useEffect(()=> {
+    const fetCategories = async ()=> {
+      const response = await getCategories()
+      if(response){
+        setCategories(response)
+      }
+    }
+    fetCategories()
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const data = await addArticle(values);
+      console.log(data)
       if(data){
         resetForm();
       }
@@ -71,12 +84,12 @@ function Article() {
                 name='category'
                 value={category}
                 onChange={handleChange}
-                options={[
-                  '-----',
-                  { label: 'One', value: '1' },
-                  { label: 'Two', value: '2' },
-                  { label: 'Three', value: '3', disabled: true },
-                ]}
+                options={
+                  
+                  categories.map(category=>(
+                    {label: category.name, value: category.id}
+                  ))
+                }
                 required
               />
               <CButton type="submit" className="btn btn-success me-4 text-light">

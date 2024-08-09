@@ -15,7 +15,7 @@ import {
 } from '@coreui/react'
 import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
+import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
 import './faq.scss'
 import { getFaqs } from '../../../utils/api'
 import { useNavigate } from 'react-router-dom'
@@ -25,18 +25,21 @@ function FAQS() {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ error, setError ] = useState('');
 
-  useEffect(async ()=> {
-    const response = await getFaqs();
-    try {
-      if(response){
-        setFaqs(response);
-        setIsLoading(false);
-        setError('');
+  useEffect(()=> {
+    const fetchData = async () =>{
+      try {
+        const response = await getFaqs();
+        if(response){
+          setIsLoading(false)
+          setFaqs(response)
+          setError(false)
+        }
+      } catch (error) {
+        setIsLoading(false)
+        setError(error.message)
       }
-    } catch (error) {
-      setIsLoading(false);
-      setError(error.message);
     }
+    fetchData()
   }, []);
 
   const sliceText = (text) => {
@@ -69,11 +72,11 @@ function FAQS() {
           <CTableBody>
             {
               faqs && faqs.map(item => {
-                return <CTableRow>
+                return <CTableRow key={item.id}>
                   <CTableDataCell>{sliceText(item.question)}</CTableDataCell>
                   <CTableDataCell>{sliceText(item.answer)}</CTableDataCell>
                   <CTableDataCell>
-                    <button className='btn btn-primary me-e'>
+                    <button className='btn btn-primary me-2'>
                       <CIcon icon={cilPen}/>
                     </button>
                     <button className='btn btn-danger text-white'>

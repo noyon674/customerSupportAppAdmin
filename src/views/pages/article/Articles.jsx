@@ -15,28 +15,30 @@ import {
 import React, { useEffect, useState } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
-import { getArticles } from "src/utils/api"
+import { getArticles } from '../../../utils/api'
 import './article.scss'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Articles() {
-  const [data, setData] = useState([])
+  const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  useEffect(async()=>{
-    const response = await getArticles()
-
-    try {
-      if (response) {
-        setData(response)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getArticles()
+        if (response) {
+          setIsLoading(false)
+          setArticles(response)
+          setError(false)
+        }
+      } catch (error) {
         setIsLoading(false)
-        setError(null)
+        setError(error.message)
       }
-    } catch (error) {
-      setIsLoading(false)
-      setError(error.message)
     }
+    fetchData()
   }, [])
 
   const sliceText = (text) => {
@@ -70,10 +72,10 @@ function Articles() {
                 </CTableRow>
               </CTableHead>
               <CTableBody>
-                {data &&
-                  data.map((item) => {
+                {articles &&
+                  articles.map((item) => {
                     return (
-                      <CTableRow>
+                      <CTableRow key={item.id}>
                         <CTableDataCell>{sliceText(item.title)}</CTableDataCell>
                         <CTableDataCell>{item.category}</CTableDataCell>
                         <CTableDataCell>{sliceText(item.content)}</CTableDataCell>
