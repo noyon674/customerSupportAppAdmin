@@ -14,7 +14,6 @@ import {
 } from '@coreui/react';
 import { useForm } from '../../../utils/useForm';
 import { addCategory } from '../../../utils/api';
-import axios from 'axios';
 
 function Category() {
   const { values, handleChange, resetForm }= useForm({
@@ -29,11 +28,12 @@ function Category() {
     e.preventDefault();
     try {
       const response = await addCategory(values);
+      resetForm();
     } catch (error) {
       console.log(error.message);
     }
-  }
-
+  };
+  
   return (
     <CRow>
       <CCol xs={12}>

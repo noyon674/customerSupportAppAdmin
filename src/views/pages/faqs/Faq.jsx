@@ -16,7 +16,7 @@ import { useForm } from '../../../utils/useForm';
 import { addFAQ } from '../../../utils/api';
 import axios from 'axios';
 
-function Frequent() {
+function FAQ() {
   const {values, handleChange, resetForm } = useForm({
     question: '',
     answer: ''
@@ -73,4 +73,4 @@ function Frequent() {
   )
 }
 
-export default Frequent
+export default FAQ;

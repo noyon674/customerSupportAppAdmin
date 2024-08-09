@@ -15,14 +15,15 @@ import {
 } from '@coreui/react'
 import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX } from '@coreui/icons'
+import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './faq.scss'
 import { getFaqs } from '../../../utils/api'
+import { useNavigate } from 'react-router-dom'
 
-function Frequents() {
+function FAQS() {
   const [ faqs, setFaqs ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ error, setError ] = useState(null);
+  const [ error, setError ] = useState('');
 
   useEffect(async () => {
     const response = await getFaqs();
@@ -30,7 +31,7 @@ function Frequents() {
       if(response){
         setFaqs(response);
         setIsLoading(false);
-        setError(null);
+        setError('');
       }
     } catch (error) {
       setIsLoading(false);
@@ -38,6 +39,16 @@ function Frequents() {
     }
   }, []);
 
+  const sliceText = (text) => {
+    if (text.length > 150) {
+      return text.slice(0, 150) + '...'
+    } else return text
+  };
+
+  const navigate = useNavigate();
+  const addNewFAQ = (e) => {
+    navigate('/faqs/faq')
+  }
   const totalTable = (
   <CRow>
   <CCol xs={12}>
@@ -59,8 +70,8 @@ function Frequents() {
             {
               faqs && faqs.map(item => {
                 return <CTableRow>
-                  <CTableDataCell>{item.question}</CTableDataCell>
-                  <CTableDataCell>{item.answer}</CTableDataCell>
+                  <CTableDataCell>{sliceText(item.question)}</CTableDataCell>
+                  <CTableDataCell>{sliceText(item.answer)}</CTableDataCell>
                   <CTableDataCell>
                     <button className='btn btn-primary me-e'>
                       <CIcon icon={cilPen}/>
@@ -82,9 +93,14 @@ function Frequents() {
 
   return (
     <div>
-      {isLoading ? 'Data Fetching...' : totalTable};
+    <div className="btnContainer">
+      <button className="btn btn-primary" onClick={addNewFAQ}>
+        Add <CIcon icon={cilNoteAdd} />
+      </button>
     </div>
+    {isLoading ? 'Data Fetching...' : totalTable}
+  </div>
   )
 }
 
-export default Frequents
+export default FAQS

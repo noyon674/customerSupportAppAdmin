@@ -290,14 +290,14 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'FAQs',
-        to: '/frequents',
+        name: 'FAQS',
+        to: '/faqs',
       },
-      {
-        component: CNavItem,
-        name: 'FAQ',
-        to: '/frequents/id',
-      },
+      // {
+      //   component: CNavItem,
+      //   name: 'FAQ',
+      //   to: '/faqs/faq',
+      // },
     ],
   },
   {
