@@ -34,6 +34,11 @@ export const addFAQ = async (userdata) => {
     return response.data;
 }
 
+export const deleteFAQ = async (id) => {
+    const response = await apiClient.delete('/faqs/', id);
+    return response.data
+}
+
 
 // API for categories
 export const getCategories = async () => {

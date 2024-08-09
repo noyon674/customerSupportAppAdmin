@@ -17,7 +17,7 @@ import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
 import './faq.scss'
-import { getFaqs } from '../../../utils/api'
+import { deleteFAQ, getFaqs } from '../../../utils/api'
 import { useNavigate } from 'react-router-dom'
 
 function FAQS() {
@@ -51,6 +51,15 @@ function FAQS() {
   const navigate = useNavigate();
   const addNewFAQ = (e) => {
     navigate('/faqs/faq')
+  };
+
+  const handleRemove = async (id) => {
+    try {
+      const response = await deleteFAQ(id)
+      console.log(response, 'dli')
+    } catch (error) {
+      
+    }
   }
   const totalTable = (
   <CRow>
@@ -79,7 +88,7 @@ function FAQS() {
                     <button className='btn btn-primary me-2'>
                       <CIcon icon={cilPen}/>
                     </button>
-                    <button className='btn btn-danger text-white'>
+                    <button onClick={e=>handleRemove(item.id)} className='btn btn-danger text-white'>
                       <CIcon icon={cilX}/>
                     </button>
                   </CTableDataCell>
