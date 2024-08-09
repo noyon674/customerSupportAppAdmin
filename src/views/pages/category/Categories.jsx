@@ -24,7 +24,7 @@ function Categories() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  useEffect(async () => {
+  useEffect(async()=>{
     const response = await getCategories()
     try {
       if (response) {

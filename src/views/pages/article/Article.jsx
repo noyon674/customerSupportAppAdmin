@@ -79,10 +79,10 @@ function Article() {
                 ]}
                 required
               />
-              <CButton type="submit" class="btn btn-success me-4 text-light">
+              <CButton type="submit" className="btn btn-success me-4 text-light">
                 Save
               </CButton>
-              <CButton type="button" class="btn btn-primary me-4">
+              <CButton type="button" className="btn btn-primary me-4">
                 Save and add another
               </CButton>
             </CForm>

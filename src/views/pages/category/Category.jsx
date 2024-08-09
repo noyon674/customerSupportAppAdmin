@@ -26,12 +26,12 @@ function Category() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    try {
-      const response = await addCategory(values);
-      resetForm();
-    } catch (error) {
-      console.log(error.message);
-    }
+    // try {
+    //   const response = await addCategory(values);
+    //   resetForm();
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
   };
   
   return (

@@ -25,7 +25,7 @@ function FAQS() {
   const [ isLoading, setIsLoading ] = useState(true);
   const [ error, setError ] = useState('');
 
-  useEffect(async () => {
+  useEffect(async ()=> {
     const response = await getFaqs();
     try {
       if(response){
