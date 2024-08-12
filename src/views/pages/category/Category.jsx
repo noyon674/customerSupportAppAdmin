@@ -12,34 +12,39 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react';
-import { useForm } from '../../../utils/useForm';
-import { addCategory } from '../../../utils/api';
+import { useForm } from "src/utils/useForm";
+import { addCategory } from "src/utils/api";
 import { useNavigate } from 'react-router-dom';
 
 function Category() {
   const navigete = useNavigate()
 
-  const { values, handleChange, resetForm }= useForm({
+  const { values, handleChange, resetForm, handleFileChange }= useForm({
     name: '',
     description: '',
-    thumbnail: ''
+    thumbnail: null
   });
 
   const { name, description, thumbnail } = values;
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('thumbnail', thumbnail);
+
     try {
-      const response = await addCategory(values)
+      const response = await addCategory(formData)
       if(response){
         resetForm()
         navigete('/categories')
-      };
+      }
     } catch (error) {
       console.log(error.message)
     }
   };
-  
+
   return (
     <CRow>
       <CCol xs={12}>
@@ -50,27 +55,26 @@ function Category() {
           <CCardBody>
             <CForm onSubmit={handleSubmit}>
               <CFormLabel>Name</CFormLabel>
-              <CFormInput 
-              className="mb-4" 
-              type="text" 
-              name="name" 
+              <CFormInput
+              className="mb-4"
+              type="text"
+              name="name"
               value={name}
               onChange={handleChange}
               required />
               <CFormLabel>Description</CFormLabel>
-              <CFormTextarea 
-              className="mb-4" 
-              name="description" 
+              <CFormTextarea
+              className="mb-4"
+              name="description"
               value={description}
               onChange={handleChange}
               rows={6} />
               <CFormLabel>Thumbnail</CFormLabel>
-              <CFormInput 
-              className="mb-4" 
+              <CFormInput
+              className="mb-4"
               type="file"
               name='thumbnail'
-              value={thumbnail}
-              onChange={handleChange} />
+              onChange={handleFileChange} />
               <CButton type="submit" className="btn btn-success me-4 text-light">
                 Save
               </CButton>

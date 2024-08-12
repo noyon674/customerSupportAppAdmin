@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/jsx-key */
 import {
   CCard,
   CCardBody,
@@ -17,7 +15,7 @@ import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './category.scss'
-import { getCategories } from '../../../utils/api'
+import { getCategories } from "src/utils/api"
 import { useNavigate } from 'react-router-dom'
 
 function Categories() {
@@ -26,21 +24,23 @@ function Categories() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getCategories()
-        if(response){
-          setIsLoading(false)
-          setCategories(response)
-          setError(false)
+    setIsLoading(true); // Set loading state before starting fetch
+
+    getCategories()
+      .then(response => {
+        if (response) {
+          setCategories(response);
+          setError(null); // Clear any previous errors
         }
-      } catch (error) {
-        setIsLoading(false)
-        setError(error.message)
-      }
-    }
-    fetchData()
-  }, [])
+      })
+      .catch(error => {
+        setError(error.message); // Set error message
+      })
+      .finally(() => {
+        setIsLoading(false); // Always reset loading state
+      });
+
+  }, []);
 
   const sliceText = (text) => {
     if (text.length > 150) {

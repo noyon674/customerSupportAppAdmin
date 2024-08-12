@@ -27,6 +27,85 @@ const _nav = [
     },
   },
   {
+    component: CNavGroup,
+    name: 'Category Tab',
+    items: [
+      {
+        component: CNavItem,
+        name: 'Categories',
+        to: '/categories/',
+      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Category',
+      //   to: '/categories/id',
+      // },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'FAQ Tab',
+    items: [
+      {
+        component: CNavItem,
+        name: 'FAQS',
+        to: '/faqs',
+      },
+      // {
+      //   component: CNavItem,
+      //   name: 'FAQ',
+      //   to: '/faqs/faq',
+      // },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Article Tab',
+    items: [
+      {
+        component: CNavItem,
+        name: 'Articles',
+        to: '/articles',
+      },
+      // {
+      //   component: CNavItem,
+      //   name: 'Article',
+      //   to: '/articles/article',
+      // },
+    ],
+  },
+  {
+    component: CNavTitle,
+    name: 'Extras',
+  },
+  {
+    component: CNavGroup,
+    name: 'Pages',
+    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Login',
+        to: '/login',
+      },
+      {
+        component: CNavItem,
+        name: 'Register',
+        to: '/register',
+      },
+      {
+        component: CNavItem,
+        name: 'Error 404',
+        to: '/404',
+      },
+      {
+        component: CNavItem,
+        name: 'Error 500',
+        to: '/500',
+      },
+    ],
+  },
+  {
     component: CNavTitle,
     name: 'Theme',
   },
@@ -268,85 +347,7 @@ const _nav = [
       text: 'NEW',
     },
   },
-  {
-    component: CNavGroup,
-    name: 'Category Tab',
-    items: [
-      {
-        component: CNavItem,
-        name: 'Categories',
-        to: '/categories/',
-      },
-      // {
-      //   component: CNavItem,
-      //   name: 'Category',
-      //   to: '/categories/id',
-      // },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'FAQ Tab',
-    items: [
-      {
-        component: CNavItem,
-        name: 'FAQS',
-        to: '/faqs',
-      },
-      // {
-      //   component: CNavItem,
-      //   name: 'FAQ',
-      //   to: '/faqs/faq',
-      // },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Article Tab',
-    items: [
-      {
-        component: CNavItem,
-        name: 'Articles',
-        to: '/articles',
-      },
-      // {
-      //   component: CNavItem,
-      //   name: 'Article',
-      //   to: '/articles/article',
-      // },
-    ],
-  },
-  {
-    component: CNavTitle,
-    name: 'Extras',
-  },
-  {
-    component: CNavGroup,
-    name: 'Pages',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Login',
-        to: '/login',
-      },
-      {
-        component: CNavItem,
-        name: 'Register',
-        to: '/register',
-      },
-      {
-        component: CNavItem,
-        name: 'Error 404',
-        to: '/404',
-      },
-      {
-        component: CNavItem,
-        name: 'Error 500',
-        to: '/500',
-      },
-    ],
-  },
+
   {
     component: CNavItem,
     name: 'Docs',
