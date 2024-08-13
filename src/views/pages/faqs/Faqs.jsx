@@ -13,6 +13,7 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from '@coreui/react'
+import { ToastContainer, toast } from 'react-toastify';
 import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
@@ -57,10 +58,19 @@ function FAQS() {
   const handleRemove = async (id) => {
     try {
       const response = await deleteFAQ(id)
+      notify()
       setRender(!render)
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  const notify = () => {
+    return toast.error('Removed Successfully !', {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "colored",
+    })
   }
 
   const totalTable = (
@@ -101,6 +111,7 @@ function FAQS() {
         </CTable>
       </CCardBody>
     </CCard>
+    <ToastContainer />
   </CCol>
 </CRow>
   );

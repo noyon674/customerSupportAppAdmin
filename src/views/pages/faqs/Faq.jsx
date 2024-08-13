@@ -12,9 +12,9 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react';
+import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from '../../../utils/useForm';
 import { addFAQ } from '../../../utils/api';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function FAQ() {
@@ -33,11 +33,21 @@ function FAQ() {
       if(response){
         resetForm();
         navigate('/faqs')
+        notify()
       }
     }catch(error){
       console.log(error.message)
     }
   }
+
+  const notify = () => {
+    return toast.success('Added Successfully !', {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "colored",
+    })
+  }
+
   return (
     <CRow>
       <CCol xs={12}>
