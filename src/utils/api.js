@@ -35,7 +35,7 @@ export const addFAQ = async (userdata) => {
 }
 
 export const deleteFAQ = async (id) => {
-    const response = await apiClient.delete('/faqs/', id);
+    const response = await apiClient.delete(`/faqs/${id}/`);
     return response.data
 }
 

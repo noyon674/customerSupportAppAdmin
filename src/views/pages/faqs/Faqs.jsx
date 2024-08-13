@@ -18,7 +18,7 @@ import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
 import './faq.scss'
 import { deleteFAQ, getFaqs } from '../../../utils/api'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function FAQS() {
   const [ faqs, setFaqs ] = useState([]);
@@ -56,11 +56,12 @@ function FAQS() {
   const handleRemove = async (id) => {
     try {
       const response = await deleteFAQ(id)
-      console.log(response, 'dli')
+      window.location.reload();
     } catch (error) {
-      
+      console.log(error.message)
     }
   }
+
   const totalTable = (
   <CRow>
   <CCol xs={12}>
@@ -85,12 +86,12 @@ function FAQS() {
                   <CTableDataCell>{sliceText(item.question)}</CTableDataCell>
                   <CTableDataCell>{sliceText(item.answer)}</CTableDataCell>
                   <CTableDataCell>
-                    <button className='btn btn-primary me-2'>
+                    <Link className='btn btn-primary me-2'>
                       <CIcon icon={cilPen}/>
-                    </button>
-                    <button onClick={e=>handleRemove(item.id)} className='btn btn-danger text-white'>
+                    </Link>
+                    <Link onClick={e=>handleRemove(item.id)} className='btn btn-danger text-white'>
                       <CIcon icon={cilX}/>
-                    </button>
+                    </Link>
                   </CTableDataCell>
                 </CTableRow>
               })
