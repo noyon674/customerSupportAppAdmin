@@ -22,6 +22,10 @@ export const addArticle = async (userdata) => {
     return response.data;
 }
 
+export const deleteArticle = async (id) => {
+    const response = await apiClient.delete(`/articles/${id}/`);
+    return response.data
+}
 
 // API for faqs
 export const getFaqs = async () => {
@@ -49,4 +53,9 @@ export const getCategories = async () => {
 export const addCategory = async (userdata) => {
     const response = await apiClient.post('/categories/', userdata);
     return response.data;
+}
+
+export const deleteCategory = async (id) => {
+    const response = await apiClient.delete(`/categories/${id}/`)
+    return response.data
 }

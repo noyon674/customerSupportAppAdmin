@@ -15,14 +15,15 @@ import {
 import React, { useEffect, useState } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
-import { getArticles } from '../../../utils/api'
+import { deleteArticle, getArticles } from '../../../utils/api'
 import './article.scss'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Articles() {
   const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [render, setRender] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +40,7 @@ function Articles() {
       }
     }
     fetchData()
-  }, [])
+  }, [render])
 
   const sliceText = (text) => {
     if (text.length > 150) {
@@ -53,6 +54,14 @@ function Articles() {
     navigate('/articles/article')
   }
 
+  const handleRemove = async (id) => {
+    try {
+      const response = await deleteArticle(id)
+      setRender(!render)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   const totalTable = (
     <CRow>
       <CCol xs={12}>
@@ -80,12 +89,12 @@ function Articles() {
                         <CTableDataCell>{item.category}</CTableDataCell>
                         <CTableDataCell>{sliceText(item.content)}</CTableDataCell>
                         <CTableDataCell>
-                          <button className="btn btn-secondary me-2">
+                          <Link className="btn btn-secondary me-2">
                             <CIcon icon={cilPen} />
-                          </button>
-                          <button className="btn btn-danger text-white">
+                          </Link>
+                          <Link className="btn btn-danger text-white" onClick={e=>handleRemove(item.id)}>
                             <CIcon icon={cilX} />
-                          </button>
+                          </Link>
                         </CTableDataCell>
                       </CTableRow>
                     )

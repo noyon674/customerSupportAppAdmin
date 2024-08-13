@@ -24,6 +24,7 @@ function FAQS() {
   const [ faqs, setFaqs ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
   const [ error, setError ] = useState('');
+  const [ render, setRender ] = useState(true);
 
   useEffect(()=> {
     const fetchData = async () =>{
@@ -40,7 +41,7 @@ function FAQS() {
       }
     }
     fetchData()
-  }, []);
+  }, [render]);
 
   const sliceText = (text) => {
     if (text.length > 150) {
@@ -56,7 +57,7 @@ function FAQS() {
   const handleRemove = async (id) => {
     try {
       const response = await deleteFAQ(id)
-      window.location.reload();
+      setRender(!render)
     } catch (error) {
       console.log(error.message)
     }

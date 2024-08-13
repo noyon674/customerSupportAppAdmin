@@ -16,12 +16,15 @@ import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './category.scss'
 import { getCategories } from "src/utils/api"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { deleteCategory } from '../../../utils/api'
 
 function Categories() {
   const [categories, setCategories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [render, setRender] = useState(true)
+
 
   useEffect(() => {
     setIsLoading(true); // Set loading state before starting fetch
@@ -40,7 +43,7 @@ function Categories() {
         setIsLoading(false); // Always reset loading state
       });
 
-  }, []);
+  }, [render]);
 
   const sliceText = (text) => {
     if (text.length > 150) {
@@ -52,6 +55,15 @@ function Categories() {
 
   const addCategory = () => {
     navigate('/categories/category')
+  }
+
+  const handleRemove = async (id) => {
+    try {
+      const response = await deleteCategory(id)
+      setRender(!render)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   const totalTable = (
@@ -83,12 +95,12 @@ function Categories() {
                           <img src={item.thumbnail} alt="" />
                         </CTableDataCell>
                         <CTableDataCell>
-                          <button className="btn btn-primary me-2">
+                          <Link className="btn btn-primary me-2">
                             <CIcon icon={cilPen} />
-                          </button>
-                          <button className="btn btn-danger text-white">
+                          </Link>
+                          <Link className="btn btn-danger text-white" onClick={e=>handleRemove(item.id)}>
                             <CIcon icon={cilX} />
-                          </button>
+                          </Link>
                         </CTableDataCell>
                       </CTableRow>
                     )
