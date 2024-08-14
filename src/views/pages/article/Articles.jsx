@@ -13,11 +13,13 @@ import {
   CTableRow,
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
 import { deleteArticle, getArticles } from '../../../utils/api'
 import './article.scss'
 import { Link, useNavigate } from 'react-router-dom'
+import { failNotify, removeNotify } from '../../../utils/notification'
 
 function Articles() {
   const [articles, setArticles] = useState([])
@@ -57,8 +59,10 @@ function Articles() {
   const handleRemove = async (id) => {
     try {
       const response = await deleteArticle(id)
+      removeNotify()
       setRender(!render)
     } catch (error) {
+      failNotify(error.message)
       console.log(error.message)
     }
   }
@@ -103,6 +107,7 @@ function Articles() {
             </CTable>
           </CCardBody>
         </CCard>
+        <ToastContainer />
       </CCol>
     </CRow>
   )

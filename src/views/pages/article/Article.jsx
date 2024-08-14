@@ -15,6 +15,7 @@ import {
   CFormSelect,
 } from '@coreui/react';
 import { addArticle, getCategories } from '../../../utils/api';
+import { addNotify, failNotify } from '../../../utils/notification';
 
 
 function Article() {
@@ -30,9 +31,15 @@ function Article() {
 
   useEffect(()=> {
     const fetCategories = async ()=> {
-      const response = await getCategories()
-      if(response){
-        setCategories(response)
+      try {
+        const response = await getCategories()
+        if(response){
+          setCategories(response)
+          addNotify()
+      }
+      } catch (error) {
+        failNotify(error.message)
+        console.log(error.message)
       }
     }
     fetCategories()

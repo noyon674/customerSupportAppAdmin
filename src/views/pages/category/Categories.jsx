@@ -19,7 +19,7 @@ import './category.scss'
 import { getCategories } from 'src/utils/api'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteCategory } from '../../../utils/api'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import { failNotify, removeNotify } from '../../../utils/notification'
 
 function Categories() {
