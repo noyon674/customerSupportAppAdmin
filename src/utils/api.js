@@ -17,6 +17,7 @@ const fetchData = async (method, url, data = null) => {
 // Articles API
 export const getArticles = () => fetchData('get', '/articles/');
 export const addArticle = (userdata) => fetchData('post', '/articles/', userdata);
+<<<<<<< HEAD
 export const deleteArticle = (id) => fetchData('delete', `/articles/${id}/`);
 
 // FAQs API
@@ -28,3 +29,4 @@ export const deleteFAQ = (id) => fetchData('delete', `/faqs/${id}`);
 export const getCategories = () => fetchData('get', '/categories/');
 export const addCategory = (userdata) => fetchData('post', '/categories/', userdata);
 export const deleteCategory = (id) => fetchData('delete', `/categories/${id}/`)
+
