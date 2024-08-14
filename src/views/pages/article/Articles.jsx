@@ -110,7 +110,7 @@ function Articles() {
             </CTable>
           </CCardBody>
         </CCard>
-        <ToastContainer />
+        <ToastContainer id="one" />
       </CCol>
     </CRow>
   )

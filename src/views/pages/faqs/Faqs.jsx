@@ -65,7 +65,6 @@ function FAQS() {
     }
   }
 
-
   const totalTable = (
     <CRow>
       <CCol xs={12}>
@@ -108,7 +107,7 @@ function FAQS() {
             </CTable>
           </CCardBody>
         </CCard>
-        <ToastContainer />
+        <ToastContainer id="two" />
       </CCol>
     </CRow>
   )

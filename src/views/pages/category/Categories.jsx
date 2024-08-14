@@ -90,7 +90,7 @@ function Categories() {
                 {categories &&
                   categories.map((item) => {
                     return (
-                      <CTableRow>
+                      <CTableRow key={item.id}>
                         <CTableDataCell>{sliceText(item.name)}</CTableDataCell>
                         <CTableDataCell>{sliceText(item.description)}</CTableDataCell>
                         <CTableDataCell className="img">
@@ -114,7 +114,7 @@ function Categories() {
             </CTable>
           </CCardBody>
         </CCard>
-        <ToastContainer />
+        <ToastContainer id="three" />
       </CCol>
     </CRow>
   )
