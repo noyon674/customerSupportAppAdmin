@@ -15,6 +15,7 @@ import {
 import { useForm } from "src/utils/useForm";
 import { addCategory } from "src/utils/api";
 import { useNavigate } from 'react-router-dom';
+import { addNotify, failNotify } from '../../../utils/notification';
 
 function Category() {
   const navigete = useNavigate()
@@ -39,11 +40,14 @@ function Category() {
       if(response){
         resetForm()
         navigete('/categories')
+        addNotify()
       }
     } catch (error) {
+      failNotify(error.message)
       console.log(error.message)
     }
   };
+
 
   return (
     <CRow>

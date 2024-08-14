@@ -12,10 +12,10 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react';
-import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from '../../../utils/useForm';
 import { addFAQ } from '../../../utils/api';
 import { useNavigate } from 'react-router-dom';
+import { addNotify, failNotify } from '../../../utils/notification';
 
 function FAQ() {
   const navigate = useNavigate()
@@ -33,19 +33,12 @@ function FAQ() {
       if(response){
         resetForm();
         navigate('/faqs')
-        notify()
+        addNotify()
       }
     }catch(error){
+      failNotify(error.message)
       console.log(error.message)
     }
-  }
-
-  const notify = () => {
-    return toast.success('Added Successfully !', {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "colored",
-    })
   }
 
   return (

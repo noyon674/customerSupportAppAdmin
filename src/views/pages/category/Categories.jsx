@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import {
   CCard,
   CCardBody,
@@ -15,9 +16,11 @@ import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './category.scss'
-import { getCategories } from "src/utils/api"
+import { getCategories } from 'src/utils/api'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteCategory } from '../../../utils/api'
+import { ToastContainer, toast } from 'react-toastify'
+import { failNotify, removeNotify } from '../../../utils/notification'
 
 function Categories() {
   const [categories, setCategories] = useState([])
@@ -25,25 +28,22 @@ function Categories() {
   const [error, setError] = useState(null)
   const [render, setRender] = useState(true)
 
-
   useEffect(() => {
-    setIsLoading(true); // Set loading state before starting fetch
-
-    getCategories()
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await getCategories()
         if (response) {
-          setCategories(response);
-          setError(null); // Clear any previous errors
+          setIsLoading(false)
+          setCategories(response)
+          setError(false)
         }
-      })
-      .catch(error => {
-        setError(error.message); // Set error message
-      })
-      .finally(() => {
-        setIsLoading(false); // Always reset loading state
-      });
-
-  }, [render]);
+      } catch (error) {
+        setIsLoading(false)
+        setError(error.message)
+      }
+    }
+    fetchData()
+  }, [render])
 
   const sliceText = (text) => {
     if (text.length > 150) {
@@ -60,8 +60,10 @@ function Categories() {
   const handleRemove = async (id) => {
     try {
       const response = await deleteCategory(id)
+      removeNotify()
       setRender(!render)
     } catch (error) {
+      failNotify(error.message)
       console.log(error.message)
     }
   }
@@ -98,7 +100,10 @@ function Categories() {
                           <Link className="btn btn-primary me-2">
                             <CIcon icon={cilPen} />
                           </Link>
-                          <Link className="btn btn-danger text-white" onClick={e=>handleRemove(item.id)}>
+                          <Link
+                            onClick={(e) => handleRemove(item.id)}
+                            className="btn btn-danger text-white"
+                          >
                             <CIcon icon={cilX} />
                           </Link>
                         </CTableDataCell>
@@ -109,6 +114,7 @@ function Categories() {
             </CTable>
           </CCardBody>
         </CCard>
+        <ToastContainer />
       </CCol>
     </CRow>
   )
