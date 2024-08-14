@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
-
+import { ToastContainer } from 'react-toastify';
 // routes config
 import routes from '../routes'
 
@@ -26,6 +26,7 @@ const AppContent = () => {
           <Route path="/" element={<Navigate to="dashboard" replace />} />
         </Routes>
       </Suspense>
+      <ToastContainer />
     </CContainer>
   )
 }

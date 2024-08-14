@@ -5,9 +5,12 @@ import 'core-js'
 
 import App from './App'
 import store from './store'
+import Protected from './views/pages/projectedPage/Protected'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+    <Protected>
+      <App />
+    </Protected>
   </Provider>,
 )

@@ -1,25 +1,41 @@
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
 export const addNotify = () => {
-    return toast.success('Added Successfully !', {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "colored",
-    })
+  return toast.success('Added Successfully !', {
+    position: 'top-right',
+    autoClose: 2000,
+    theme: 'colored',
+  })
 }
 
 export const removeNotify = () => {
-    return toast.error('Removed Successfully !', {
-      position: 'top-right',
-      autoClose: 3000,
-      theme: 'colored',
-    })
+  return toast.error('Removed Successfully !', {
+    position: 'top-right',
+    autoClose: 2000,
+    theme: 'colored',
+  })
 }
 
 export const failNotify = (msg) => {
-    return toast.warn(msg, {
-      position: 'top-right',
-      autoClose: 3000,
-      theme: 'colored',
-    })
+  return toast.warn(msg, {
+    position: 'top-right',
+    autoClose: 2000,
+    theme: 'colored',
+  })
+}
+
+export const loginNotify = () => {
+  return toast.success('Successfully Login!', {
+    position: 'top-right',
+    autoClose: 2000,
+    theme: 'colored',
+  })
+}
+
+export const failLoginNotify = (msg) => {
+  return toast.warn(msg, {
+    position: 'top-right',
+    autoClose: 2000,
+    theme: 'colored',
+  })
 }
