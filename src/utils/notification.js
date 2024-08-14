@@ -31,11 +31,3 @@ export const loginNotify = () => {
     theme: 'colored',
   })
 }
-
-export const failLoginNotify = (msg) => {
-  return toast.warn(msg, {
-    position: 'top-right',
-    autoClose: 2000,
-    theme: 'colored',
-  })
-}

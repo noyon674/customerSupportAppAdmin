@@ -17,7 +17,7 @@ import CIcon from '@coreui/icons-react'
 import { ToastContainer, toast } from 'react-toastify'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { failLoginNotify, loginNotify } from '../../../utils/notification'
+import { loginNotify } from '../../../utils/notification'
 import { useForm } from '../../../utils/useForm'
 
 const Login = () => {
