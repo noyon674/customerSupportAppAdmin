@@ -15,7 +15,6 @@ import {
   CFormSelect,
 } from '@coreui/react';
 import { addArticle, getCategories } from '../../../utils/api';
-import { addNotify, failNotify } from '../../../utils/notification';
 
 
 function Article() {
@@ -35,10 +34,8 @@ function Article() {
         const response = await getCategories()
         if(response){
           setCategories(response)
-          addNotify()
       }
       } catch (error) {
-        failNotify(error.message)
         console.log(error.message)
       }
     }
@@ -62,7 +59,7 @@ function Article() {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader>
-            <strong>Frequent</strong>
+            <strong>Article</strong>
           </CCardHeader>
           <CCardBody>
             <CForm onSubmit={handleSubmit}>

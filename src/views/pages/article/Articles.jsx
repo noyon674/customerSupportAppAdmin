@@ -71,7 +71,7 @@ function Articles() {
       <CCol xs={12}>
         <CCard className="mb-4">
           <CCardHeader className="tableHeader">
-            <strong>All FAQs</strong>
+            <strong>All Articles</strong>
             <CIcon icon={cilFilter} />
           </CCardHeader>
           <CCardBody>
@@ -96,7 +96,10 @@ function Articles() {
                           <Link className="btn btn-secondary me-2">
                             <CIcon icon={cilPen} />
                           </Link>
-                          <Link className="btn btn-danger text-white" onClick={e=>handleRemove(item.id)}>
+                          <Link
+                            className="btn btn-danger text-white"
+                            onClick={(e) => handleRemove(item.id)}
+                          >
                             <CIcon icon={cilX} />
                           </Link>
                         </CTableDataCell>
