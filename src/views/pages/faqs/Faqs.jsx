@@ -85,12 +85,17 @@ function FAQS() {
               <CTableBody>
                 {faqs &&
                   faqs.map((item) => {
+                    const { id, question, answer } = item
                     return (
-                      <CTableRow key={item.id}>
-                        <CTableDataCell>{sliceText(item.question)}</CTableDataCell>
-                        <CTableDataCell>{sliceText(item.answer)}</CTableDataCell>
+                      <CTableRow key={id}>
+                        <CTableDataCell>{sliceText(question)}</CTableDataCell>
+                        <CTableDataCell>{sliceText(answer)}</CTableDataCell>
                         <CTableDataCell>
-                          <Link className="btn btn-primary me-2" to={`/faqs/${item.id}`}>
+                          <Link
+                            to={`${id}`}
+                            state={{ id, question, answer }}
+                            className="btn btn-primary me-2"
+                          >
                             <CIcon icon={cilPen} />
                           </Link>
                           <Link

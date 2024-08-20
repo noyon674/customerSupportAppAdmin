@@ -12,33 +12,21 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react';
-import { getOneFAQ, updateFAQ } from '../../../utils/api';
-import { useNavigate, useParams } from 'react-router-dom';
+import { updateFAQ } from '../../../utils/api';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { addNotify, failNotify } from '../../../utils/notification';
 
 function Update() {
+  const location = useLocation()
+  const { id } = location.state
+  const [question, setQuestion] = useState(location.state.question)
+  const [answer, setAnswer] = useState(location.state.answer)
   const navigate = useNavigate()
-  const { id } = useParams()
-  const [question, setQuestion] = useState()
-  const [answer, setAnswer] = useState()
-
-  useEffect(()=>{
-    const fetchData = async () => {
-      try {
-        const respone = await getOneFAQ(id)
-        setQuestion(respone.question)
-        setAnswer(respone.answer)
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
-    fetchData()
-  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedData = {question, answer}
-    console.log(updatedData)
+    const updatedInfo = {question, answer}
+    console.log(updatedInfo)
     try {
      // const response = await updateFAQ(updatedData)
       if(response){
