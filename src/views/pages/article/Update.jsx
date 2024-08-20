@@ -14,11 +14,10 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react';
-import { addArticle, getCategories } from '../../../utils/api';
+import { addArticle, getOneArticle } from '../../../utils/api';
 
 
-function Article() {
-  const [categories, setCategories] = useState([]);
+function Update() {
 
   const { values, handleChange, resetForm } = useForm({
     title: '',
@@ -29,17 +28,13 @@ function Article() {
   const { title, content, category } = values;
 
   useEffect(()=> {
-    const fetchCategories = async ()=> {
-      try {
-        const response = await getCategories()
-        if(response){
-          setCategories(response)
-      }
-      } catch (error) {
-        console.log(error.message)
-      }
+    const fetchArticle = async () => {
+        try {
+          
+        } catch (error) {
+            
+        }
     }
-    fetchCategories()
   }, []);
 
 
@@ -110,4 +105,4 @@ function Article() {
   )
 }
 
-export default Article;
+export default Update;

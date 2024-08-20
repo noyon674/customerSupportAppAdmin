@@ -28,6 +28,7 @@ const Category = React.lazy(() => import('./views/pages/category/Category'))
 // frequent
 const FAQ = React.lazy(() => import('./views/pages/faqs/Faq'))
 const FAQS = React.lazy(() => import('./views/pages/faqs/Faqs'))
+const FAQUpdate = React.lazy(() => import('./views/pages/faqs/Update'))
 
 // articles
 const Articles = React.lazy(() => import('./views/pages/article/Articles'))
@@ -113,6 +114,7 @@ const routes = [
   { path: '/categories/category', name: 'Category', element: Category, exact: true }, //routed categories component
   { path: '/faqs', name: 'FAQS', element: FAQS, exact: true }, //route for frequents component
   { path: '/faqs/faq', name: 'FAQ', element: FAQ, exact: true }, //route for frequent component
+  { path: '/faqs/:id', name: 'FAQ', element: FAQUpdate, exact: true }, //route for frequent component
   { path: '/articles', name: 'Articles', element: Articles, exact: true },
   { path: '/articles/article', name: 'Article', element: Article, exact: true },
 ]

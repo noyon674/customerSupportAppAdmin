@@ -90,7 +90,7 @@ function FAQS() {
                         <CTableDataCell>{sliceText(item.question)}</CTableDataCell>
                         <CTableDataCell>{sliceText(item.answer)}</CTableDataCell>
                         <CTableDataCell>
-                          <Link className="btn btn-primary me-2">
+                          <Link className="btn btn-primary me-2" to={`/faqs/${item.id}`}>
                             <CIcon icon={cilPen} />
                           </Link>
                           <Link
