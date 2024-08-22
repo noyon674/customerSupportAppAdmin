@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
-import { useForm } from '../../../utils/useForm';
+import { useForm } from "src/utils/useForm";
 import {
   CButton,
   CCard,
@@ -14,7 +14,7 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react';
-import { addArticle, getOneArticle } from '../../../utils/api';
+import { articleApi } from "src/utils/api";
 
 
 function Update() {
@@ -25,14 +25,14 @@ function Update() {
     category: ''
   });
 
-  const { title, content, category } = values;
+  const { id, title, content, category } = values;
 
   useEffect(()=> {
     const fetchArticle = async () => {
         try {
-          
+            let response = await articleApi.update(id, values)
         } catch (error) {
-            
+
         }
     }
   }, []);

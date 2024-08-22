@@ -14,20 +14,23 @@ const fetchData = async (method, url, data = null) => {
   return response.data;
 };
 
+// API Endpoints
+const createApiEndpoints = (resource) => ({
+  getAll: () => fetchData('get', `/${resource}/`),
+  add: (data) => fetchData('post', `/${resource}/`, data),
+  delete: (id) => fetchData('delete', `/${resource}/${id}/`),
+  update: (id, data) => fetchData('put', `/${resource}/${id}/`, data),
+  show: (id) => fetchData('get', `/${resource}/${id}`),
+});
+
 // Articles API
-export const getArticles = () => fetchData('get', '/articles/');
-export const addArticle = (userdata) => fetchData('post', '/articles/', userdata);
-export const deleteArticle = (id) => fetchData('delete', `/articles/${id}/`);
-export const getOneArticle = (id) => fetchData('get', `/articles/${id}`)
+export const articleApi = createApiEndpoints('articles');
 
 // FAQs API
-export const getFaqs = () => fetchData('get', '/faqs/');
-export const addFAQ = (userdata) => fetchData('post', '/faqs/', userdata);
-export const deleteFAQ = (id) => fetchData('delete', `/faqs/${id}/`)
-export const getOneFAQ = (id) => fetchData('get', `/faqs/${id}/`)
-export const updateFAQ = (userdata) => fetchData('put', `/faqs/${id}`, userdata)
+export const faqApi = createApiEndpoints('faqs');
+
 // Categories API
-export const getCategories = () => fetchData('get', '/categories/');
-export const addCategory = (userdata) => fetchData('post', '/categories/', userdata);
-export const deleteCategory = (id) => fetchData('delete', `/categories/${id}/`)
+export const categoryApi = createApiEndpoints('categories');
+
+
 

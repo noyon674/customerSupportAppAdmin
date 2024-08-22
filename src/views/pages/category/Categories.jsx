@@ -16,11 +16,10 @@ import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './category.scss'
-import { getCategories } from 'src/utils/api'
+import { categoryApi } from 'src/utils/api'
 import { Link, useNavigate } from 'react-router-dom'
-import { deleteCategory } from '../../../utils/api'
 import { ToastContainer } from 'react-toastify'
-import { failNotify, removeNotify } from '../../../utils/notification'
+import { failNotify, removeNotify } from "src/utils/notification"
 
 function Categories() {
   const [categories, setCategories] = useState([])
@@ -31,7 +30,7 @@ function Categories() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getCategories()
+        const response = await categoryApi.getAll()
         if (response) {
           setIsLoading(false)
           setCategories(response)
@@ -59,7 +58,7 @@ function Categories() {
 
   const handleRemove = async (id) => {
     try {
-      const response = await deleteCategory(id)
+      const response = await categoryApi.delete(id)
       removeNotify()
       setRender(!render)
     } catch (error) {

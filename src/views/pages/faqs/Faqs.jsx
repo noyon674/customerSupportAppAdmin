@@ -16,9 +16,9 @@ import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
 import './faq.scss'
-import { deleteFAQ, getFaqs } from '../../../utils/api'
+import { faqApi } from "src/utils/api"
 import { Link, useNavigate } from 'react-router-dom'
-import { failNotify, removeNotify } from '../../../utils/notification'
+import { failNotify, removeNotify } from "src/utils/notification"
 
 function FAQS() {
   const [faqs, setFaqs] = useState([])
@@ -29,7 +29,7 @@ function FAQS() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getFaqs()
+        const response = await faqApi.getAll()
         if (response) {
           setIsLoading(false)
           setFaqs(response)
@@ -56,7 +56,7 @@ function FAQS() {
 
   const handleRemove = async (id) => {
     try {
-      const response = await deleteFAQ(id)
+      const response = await faqApi.delete(id)
       removeNotify()
       setRender(!render)
     } catch (error) {

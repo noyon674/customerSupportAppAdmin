@@ -16,10 +16,10 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { CIcon } from '@coreui/icons-react'
 import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
-import { deleteArticle, getArticles } from '../../../utils/api'
+import { articleApi } from "src/utils/api"
 import './article.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { failNotify, removeNotify } from '../../../utils/notification'
+import { failNotify, removeNotify } from "src/utils/notification"
 
 function Articles() {
   const [articles, setArticles] = useState([])
@@ -30,7 +30,7 @@ function Articles() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getArticles()
+        const response = await articleApi.getAll()
         if (response) {
           setIsLoading(false)
           setArticles(response)
@@ -58,7 +58,7 @@ function Articles() {
 
   const handleRemove = async (id) => {
     try {
-      const response = await deleteArticle(id)
+      const response = await articleApi.delete(id)
       removeNotify()
       setRender(!render)
     } catch (error) {
