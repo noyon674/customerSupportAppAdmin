@@ -14,6 +14,7 @@ import {
 } from '@coreui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { addNotify, failNotify } from '../../../utils/notification';
+import { faqApi } from '../../../utils/api';
 
 function Update() {
   const location = useLocation()
@@ -25,18 +26,16 @@ function Update() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedInfo = {question, answer}
-    console.log(updatedInfo)
-    // try {
-    //  // const response = await updateFAQ(updatedData)
-    //   if(response){
-    //     resetForm();
-    //     navigate('/faqs')
-    //     addNotify()
-    //   }
-    // }catch(error){
-    //   failNotify(error.message)
-    //   console.log(error.message)
-    // }
+    try {
+     const response = await faqApi.update(id, updatedInfo)
+      if(response){
+        navigate('/faqs')
+        addNotify()
+      }
+    }catch(error){
+      failNotify(error.message)
+      console.log(error.message)
+    }
   }
 
   return (
