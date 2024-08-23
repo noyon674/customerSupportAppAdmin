@@ -99,7 +99,7 @@ function FAQS() {
                             <CIcon icon={cilPen} />
                           </Link>
                           <Link
-                            onClick={(e) => handleRemove(item.id)}
+                            onClick={(e) => handleRemove(id)}
                             className="btn btn-danger text-white"
                           >
                             <CIcon icon={cilX} />

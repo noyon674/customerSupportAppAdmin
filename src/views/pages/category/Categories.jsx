@@ -88,19 +88,24 @@ function Categories() {
               <CTableBody>
                 {categories &&
                   categories.map((item) => {
+                    const { id, name, description, thumbnail } = item
                     return (
-                      <CTableRow key={item.id}>
-                        <CTableDataCell>{sliceText(item.name)}</CTableDataCell>
-                        <CTableDataCell>{sliceText(item.description)}</CTableDataCell>
+                      <CTableRow key={id}>
+                        <CTableDataCell>{sliceText(name)}</CTableDataCell>
+                        <CTableDataCell>{sliceText(description)}</CTableDataCell>
                         <CTableDataCell className="img">
-                          <img src={item.thumbnail} alt="" />
+                          <img src={thumbnail} alt="" />
                         </CTableDataCell>
                         <CTableDataCell>
-                          <Link className="btn btn-primary me-2">
+                          <Link
+                            to={`${id}`}
+                            state={{ id, name, description, thumbnail }}
+                            className="btn btn-primary me-2"
+                          >
                             <CIcon icon={cilPen} />
                           </Link>
                           <Link
-                            onClick={(e) => handleRemove(item.id)}
+                            onClick={(e) => handleRemove(id)}
                             className="btn btn-danger text-white"
                           >
                             <CIcon icon={cilX} />

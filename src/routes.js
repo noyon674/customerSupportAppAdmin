@@ -24,6 +24,7 @@ const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 //Category
 const Categories = React.lazy(() => import('./views/pages/category/Categories'))
 const Category = React.lazy(() => import('./views/pages/category/Category'))
+const CategoryUpdate = React.lazy(() => import('./views/pages/category/Update'))
 
 // frequent
 const FAQ = React.lazy(() => import('./views/pages/faqs/Faq'))
@@ -112,9 +113,10 @@ const routes = [
   { path: '/widgets', name: 'Widgets', element: Widgets },
   { path: '/categories', name: 'Categories', element: Categories, exact: true }, //routed categories component
   { path: '/categories/category', name: 'Category', element: Category, exact: true }, //routed categories component
+  { path: '/categories/:id', name: 'CategoryUpdate', element: CategoryUpdate, exact: true },
   { path: '/faqs', name: 'FAQS', element: FAQS, exact: true }, //route for frequents component
-  { path: '/faqs/faq', name: 'FAQ', element: FAQ, exact: true }, //route for frequent component
-  { path: '/faqs/:id', name: 'FAQ', element: FAQUpdate, exact: true }, //route for frequent component
+  { path: '/faqs/faq', name: 'FAQ', element: FAQ, exact: true }, //route for frequent update component
+  { path: '/faqs/:id', name: 'FAQUpdate', element: FAQUpdate, exact: true }, //route for frequent component
   { path: '/articles', name: 'Articles', element: Articles, exact: true },
   { path: '/articles/article', name: 'Article', element: Article, exact: true },
 ]
