@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
-import { useForm } from '../../../utils/useForm';
+import { useForm } from "src/utils/useForm";
 import {
   CButton,
   CCard,
@@ -14,7 +14,7 @@ import {
   CRow,
   CFormSelect,
 } from '@coreui/react';
-import { addArticle, getCategories } from '../../../utils/api';
+import { articleApi, categoryApi } from "src/utils/api";
 
 
 function Article() {
@@ -31,7 +31,7 @@ function Article() {
   useEffect(()=> {
     const fetchCategories = async ()=> {
       try {
-        const response = await getCategories()
+        const response = await categoryApi.getAll()
         if(response){
           setCategories(response)
       }
@@ -46,7 +46,7 @@ function Article() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await addArticle(values);
+      const data = await articleApi.add(values);
       console.log(data)
       if(data){
         resetForm();

@@ -11,14 +11,14 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from '@coreui/react'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import React, { useState, useEffect } from 'react'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX, cilNoteAdd, flagSet } from '@coreui/icons'
+import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
 import './faq.scss'
-import { faqApi } from "src/utils/api"
+import { faqApi } from 'src/utils/api'
 import { Link, useNavigate } from 'react-router-dom'
-import { failNotify, removeNotify } from "src/utils/notification"
+import { failNotify, removeNotify } from 'src/utils/notification'
 
 function FAQS() {
   const [faqs, setFaqs] = useState([])

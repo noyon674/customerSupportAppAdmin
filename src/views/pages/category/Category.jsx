@@ -13,9 +13,9 @@ import {
   CRow,
 } from '@coreui/react';
 import { useForm } from "src/utils/useForm";
-import { addCategory } from "src/utils/api";
 import { useNavigate } from 'react-router-dom';
-import { addNotify, failNotify } from '../../../utils/notification';
+import { addNotify, failNotify } from "src/utils/notification";
+import { categoryApi } from '../../../utils/api';
 
 function Category() {
   const navigete = useNavigate()
@@ -36,7 +36,7 @@ function Category() {
     formData.append('thumbnail', thumbnail);
 
     try {
-      const response = await addCategory(formData)
+      const response = await categoryApi.add(formData)
       if(response){
         resetForm()
         navigete('/categories')

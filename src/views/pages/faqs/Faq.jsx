@@ -13,9 +13,9 @@ import {
   CRow,
 } from '@coreui/react';
 import { useForm } from '../../../utils/useForm';
-import { addFAQ } from '../../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import { addNotify, failNotify } from '../../../utils/notification';
+import { faqApi } from 'src/utils/api';
 
 function FAQ() {
   const navigate = useNavigate()
@@ -29,7 +29,7 @@ function FAQ() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await addFAQ(values)
+      const response = await faqApi.add(values)
       if(response){
         resetForm();
         navigate('/faqs')

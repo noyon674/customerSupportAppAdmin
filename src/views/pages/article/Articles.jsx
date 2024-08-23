@@ -15,11 +15,11 @@ import {
 import React, { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { CIcon } from '@coreui/icons-react'
-import { cilFilter, cilPen, cilX, cibAddthis, cilNoteAdd } from '@coreui/icons'
-import { articleApi } from "src/utils/api"
+import { cilFilter, cilPen, cilX, cilNoteAdd } from '@coreui/icons'
+import { articleApi } from 'src/utils/api'
 import './article.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { failNotify, removeNotify } from "src/utils/notification"
+import { failNotify, removeNotify } from 'src/utils/notification'
 
 function Articles() {
   const [articles, setArticles] = useState([])

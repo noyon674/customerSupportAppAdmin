@@ -12,7 +12,6 @@ import {
   CFormTextarea,
   CRow,
 } from '@coreui/react';
-import { updateFAQ } from '../../../utils/api';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { addNotify, failNotify } from '../../../utils/notification';
 
@@ -27,17 +26,17 @@ function Update() {
     e.preventDefault();
     const updatedInfo = {question, answer}
     console.log(updatedInfo)
-    try {
-     // const response = await updateFAQ(updatedData)
-      if(response){
-        resetForm();
-        navigate('/faqs')
-        addNotify()
-      }
-    }catch(error){
-      failNotify(error.message)
-      console.log(error.message)
-    }
+    // try {
+    //  // const response = await updateFAQ(updatedData)
+    //   if(response){
+    //     resetForm();
+    //     navigate('/faqs')
+    //     addNotify()
+    //   }
+    // }catch(error){
+    //   failNotify(error.message)
+    //   console.log(error.message)
+    // }
   }
 
   return (

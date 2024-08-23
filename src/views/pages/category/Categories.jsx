@@ -19,7 +19,7 @@ import './category.scss'
 import { categoryApi } from 'src/utils/api'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import { failNotify, removeNotify } from "src/utils/notification"
+import { failNotify, removeNotify } from 'src/utils/notification'
 
 function Categories() {
   const [categories, setCategories] = useState([])
