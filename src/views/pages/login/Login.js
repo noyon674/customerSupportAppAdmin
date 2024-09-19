@@ -18,6 +18,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginNotify } from '../../../utils/notification'
 import { useForm } from '../../../utils/useForm'
+import { logIn_Success } from '../../../redux/action'
 
 const Login = () => {
   const state = useSelector((state) => state.isAuthenticated)
@@ -35,7 +36,7 @@ const Login = () => {
     try {
       if (values.username === 'admin') {
         if (values.password === '674') {
-          dispatch({ type: 'LOGIN' })
+          dispatch(logIn_Success(true))
           loginNotify()
         } else setErrorMsg('Incorrect password')
       } else setErrorMsg(`Username doesn't exist.`)
