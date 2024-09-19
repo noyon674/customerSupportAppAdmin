@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { LOGIN_SUCCESS, SIDEBAR_ON_OFF } from './type'
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS, SIDEBAR_ON_OFF } from './type'
 
 const initialState = {
   sidebarShow: true,
@@ -19,6 +19,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: action.payload,
       }
+    case LOGOUT_SUCCESS:
+        return {
+            ...state,
+            isAuthenticated: action.payload
+        }
     default:
       return state
   }

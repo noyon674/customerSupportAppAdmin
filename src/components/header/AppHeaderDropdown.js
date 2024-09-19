@@ -19,12 +19,17 @@ import {
   cilSettings,
   cilTask,
   cilUser,
+  cilAccountLogout
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
+import { useDispatch } from 'react-redux'
+import { logOut_Success } from '../../redux/action'
 
 const AppHeaderDropdown = () => {
+  const dispatch = useDispatch();
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
@@ -87,6 +92,12 @@ const AppHeaderDropdown = () => {
         <CDropdownItem href="#">
           <CIcon icon={cilLockLocked} className="me-2" />
           Lock Account
+        </CDropdownItem>
+        <CDropdownItem href="#">
+          <button onClick={e=>dispatch(logOut_Success(false))} style={{background:'none', border:'none'}}>
+            <CIcon icon={cilAccountLogout} className='me-2' />
+            Logout
+          </button>
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
